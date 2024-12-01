@@ -17,6 +17,12 @@ public class Main {
         System.out.println(Arrays.toString(resIntArr));
     }
 
+    /**
+     * Метод, который принимает массив целых чисел
+     * и возвращает список уникальных чисел, порядок не важен
+     * @param numbers массив целых чисел
+     * @return возвращает список уникальных чисел, порядок не важен
+     */
     public static Set<Integer> getUniqueElements(int[] numbers) {
         Set<Integer> uniqueElements = new HashSet<>();
         for (int number : numbers) {
@@ -25,12 +31,24 @@ public class Main {
         return uniqueElements;
     }
 
+    /**
+     *  Метод, который возвращает уникальные строки в порядке их появления
+     * @param numbers строковый массив
+     * @return Set<String>
+     */
     public static Set<String> getOrderedUniqueElements(String[] numbers) {
         Set<String> getOrderedUniqueElements = new LinkedHashSet<>();
         Collections.addAll(getOrderedUniqueElements, numbers);
         return getOrderedUniqueElements;
     }
 
+    /**
+     * Метод, который принимает массив чисел и число-цель,
+     * возвращает массив из двух чисел: ближайший меньший и больший.
+     * @param arr int[] arr
+     * @param target int target
+     * @return Integer[]
+     */
     public static Integer[] findNearestElements(int[] arr, int target) {
         TreeSet<Integer> set = new TreeSet<>();
         for (Integer el : arr) {
