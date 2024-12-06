@@ -24,7 +24,7 @@ public class ImmutableClass {
     }
 
     public CustomMutableClass getMutableClass() {
-        return new CustomMutableClass(mutableClass.getValue());
+        return new CustomMutableClass(mutableClass);
     }
 
     @Override
