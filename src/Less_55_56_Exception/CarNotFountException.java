@@ -8,10 +8,6 @@ package Less_55_56_Exception;
 
 
 public class CarNotFountException extends RuntimeException {
-    /*public void printException(Car car){
-        System.out.println("Машина с параметрами" + car.getModel() +
-                " и " + car.getPower() + " в данном списке не найдена");
-    }*/
 
     public CarNotFountException(String message) {
         super(message);

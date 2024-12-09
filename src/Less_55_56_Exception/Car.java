@@ -37,13 +37,13 @@ public class Car {
      * Если машина есть в списке, метод вернёт соответствующую запись об этом.
      * Если машины нет в списке - то будет выброшено исключение CarNotFountException
      * @param list - List<Car> list. Список машин.
-     * @return Car - объект-машина, при отсутствии CarNotFountException.
+     * @return Car - объект-машина, при отсутствии CarNotFountException
      */
     public Car getCar(List<Car> list){
         List<Car> lists = new ArrayList<>(list);
             for (Car c : lists) {
                 if (c.getPower()== this.getPower() && c.getModel().equalsIgnoreCase(this.getModel())) {
-                    System.out.println("Ваша машина: модель - " + model + ", силой - " + power + " есть в списке.");
+                    System.out.println("Ваша машина:  модель - " + model + ", силой - " + power + " есть в списке.");
                     return this;
                 }
             }

@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Main_55_56 {
     public static void main(String[] args) {
-        System.out.println(task1(16, 0));
+        System.out.println(task1(17, 0));
 
         List<Car> cars = new ArrayList<>();
         cars.add(new Car("Niva", 240));
@@ -37,6 +37,7 @@ public class Main_55_56 {
 
     /**
      * Метод, который делит одно число на другое. Не выбрасывает исключение ArithmeticException.
+     *
      * @param a1 - целое число a1.
      * @param a2 - целое число a2.
      * @return - результат деления - целое число.
@@ -52,6 +53,7 @@ public class Main_55_56 {
 
     /**
      * Метод, который проверяет пароль, void.
+     *
      * @param password - String password. Введённый пароль.
      */
     public static void passwordVerification(String password) {
@@ -67,7 +69,7 @@ public class Main_55_56 {
         String passwordWhitespace = " Не должен содержать пробелов.";
         String passwordCorrect = " Пожалуйста придумайте новый пароль.";
 
-        if (password.length() >= 8  && password.length() <= 20) {
+        if (password.length() >= 8 && password.length() <= 20) {
             hasLengthPassword = true;
             passwordLength = "";
         }
@@ -97,18 +99,18 @@ public class Main_55_56 {
             }
         }
 
-        if (!password.contains(" ")){
+        if (!password.contains(" ")) {
             hasWhitespacePassword = true;
             passwordWhitespace = "";
         }
 
-        if(hasLengthPassword && hasUpperCasePassword && hasLowerCasePassword
-                && hasDigitPassword && hasWhitespacePassword){
+        if (hasLengthPassword && hasUpperCasePassword && hasLowerCasePassword
+                && hasDigitPassword && hasWhitespacePassword) {
             passwordCorrect = " Корректный, может быть использован.";
         }
 
         System.out.println("Ваш пароль - " + password + passwordLength + passwordUpperCase + passwordLowerCase
-         + passwordDigit + passwordWhitespace + passwordCorrect);
+                + passwordDigit + passwordWhitespace + passwordCorrect);
 
     }
 }
