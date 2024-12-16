@@ -46,5 +46,10 @@ public class Main_Less_59_60 {
             }
         }, true));
 
+        System.out.println("Собираем в карту по доступности книг: " + '\n' +
+                library.partitioningByBook().get(false));
+
+        System.out.println("Собираем в карту по автору: " + '\n' + library.groupingByAuthors());
+
     }
 }

@@ -6,7 +6,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Library {
-    Map<Integer, Book> books = new HashMap<>();
+    Map<Integer, Book> books;
 
     public Library(Map<Integer, Book> books) {
         this.books = books;
@@ -28,7 +28,6 @@ public class Library {
         books.put(book.getId(), book);
     }
 
-
     /**
      * Метод получения книги по id из библиотеки.
      *
@@ -36,11 +35,12 @@ public class Library {
      * @return - Book, книга. Если книги нет, то вернётся null.
      */
     public Book getBook(Integer id) {
-        return books.getOrDefault(id, null);
+        return books.get(id);
     }
 
     /**
      * Метод получения списка всех книг с сортировкой по названию
+     *
      * @return - List<Book>, отсортированный по названию книг.
      */
     public List<Book> getBooks() {
@@ -52,6 +52,7 @@ public class Library {
     /**
      * Метод выдаёт список книг, в зависимости от условия наличия
      * Книги отсортированы по названию
+     *
      * @param bool - Boolean bool. Есть(true) книга в библиотеке или её там нет(false).
      * @return - List<Book>.
      */
@@ -64,28 +65,31 @@ public class Library {
 
     /**
      * Метод возвращает количество всех книг в библиотеке.
+     *
      * @return - Integer
      */
-    public Integer getCountBooks(){
+    public Integer getCountBooks() {
         return books.size();
     }
 
     /**
      * Метод возвращает количество книг в библиотеке, исходя из наличия.
+     *
      * @return - Integer
      */
-    public Integer getCountBooks(Boolean bool){
+    public Integer getCountBooks(Boolean bool) {
         return (int) books.values().stream()
                 .filter(s -> s.getIsAvailable() == bool).count();
     }
 
     /**
      * Метод для получения списка авторов, без дубликатов
+     *
      * @return - List<String>
      */
-    public List<String> getAuthors(){
+    public List<String> getAuthors() {
         return books.values().stream()
-                .map(book ->book.getAuthor())
+                .map(book -> book.getAuthor())
                 .distinct()
                 .sorted((author1, author2) -> author1.compareTo(author2))
                 .collect((Collectors.toList()));
@@ -93,6 +97,7 @@ public class Library {
 
     /**
      * Метод получения списка всех книг с сортировкой по компаратору
+     *
      * @param comparator - Comparator<Book> comparator
      * @return List<Book>, отсортированный по переданному компаратору.
      */
@@ -105,8 +110,9 @@ public class Library {
     /**
      * Метод выдаёт список книг, в зависимости от условия наличия
      * Книги отсортированы по компаратору
+     *
      * @param comparator - Comparator<Book> comparator
-     * @param bool - Boolean bool. Есть(true) книга в библиотеке или её там нет(false).
+     * @param bool       - Boolean bool. Есть(true) книга в библиотеке или её там нет(false).
      * @return List<Book>, отсортированный по переданному компаратору.
      */
     public List<Book> getBooks(Comparator<Book> comparator, Boolean bool) {
@@ -114,5 +120,25 @@ public class Library {
                 .filter(book -> book.getIsAvailable() == bool)
                 .sorted(comparator)
                 .collect((Collectors.toList()));
+    }
+
+    /**
+     * Метод, который получает из карты books
+     * карту с группировкой книг по их доступности в библиотеке.
+     * @return - Map<Boolean, List<Book>>.
+     */
+    public Map<Boolean, List<Book>> partitioningByBook() {
+        return books.values().stream()
+                .collect(Collectors.partitioningBy(book -> book.getIsAvailable()));
+    }
+
+    /**
+     * Метод, который получает из карты books
+     * карту c группировкой книг по авторам.
+     * @return - Map<String,List<Book>>.
+     */
+    public Map<String,List<Book>> groupingByAuthors(){
+        return books.values().stream()
+                .collect(Collectors.groupingBy(book -> book.getAuthor(), Collectors.toList()));
     }
 }
